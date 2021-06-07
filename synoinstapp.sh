@@ -9,28 +9,29 @@ BASEURL=https://raw.githubusercontent.com/technorabilia/docker-bits/main/lsio
 [[ $# -ne 1 ]] &&
   echo "Provide one LinuxServer.io project name like e.g. 'sonarr'! Aborting." && exit 1
 
-if ! wget --quiet --spider $BASEURL/$1/docker-compose.yaml
-then
-  echo "LinuxServer.io project '$1' does not exists! Aborting." && exit 1
-  exit 1
-fi
+curl --silent --location --head --fail \
+  $BASEURL/$1/run-once.sh --output /dev/null || \
+  { echo "LinuxServer.io project '$1' does not exists! Aborting."; exit 1; }
 
 [[ -d $BASEDIR/$1 ]] && \
   echo "Output directory already exists! Aborting." && exit 1
+
+# create project dir
 mkdir -p $BASEDIR/$1
 
 # downloads
 [[ -f $BASEDIR/docker-env.cfg ]] || \
-  curl -sL $BASEURL/docker-env.cfg -o $BASEDIR/docker-env.cfg
+  curl --silent --location $BASEURL/docker-env.cfg --output $BASEDIR/docker-env.cfg
 
-curl -sL $BASEURL/$1/docker-compose.yaml -o $BASEDIR/$1/docker-compose.yaml
+curl --silent --location $BASEURL/$1/docker-compose.yaml --output $BASEDIR/$1/docker-compose.yaml
 
-curl -sL $BASEURL/$1/run-once.sh -o $BASEDIR/$1/run-once.sh
-(cd $BASEDIR/$1; . /$BASEDIR/$1/run-once.sh)
+curl --silent --location $BASEURL/$1/run-once.sh --output $BASEDIR/$1/run-once.sh
+( cd $BASEDIR/$1; . /$BASEDIR/$1/run-once.sh )
 rm $BASEDIR/$1/run-once.sh
 
 # readme
 echo The following directories and files have been created:
+echo "   $BASEDIR/docker-env.cfg"
 find $BASEDIR/$1 | pr -T -o 3
 echo
 echo Application setup:
