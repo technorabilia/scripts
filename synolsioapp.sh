@@ -2,8 +2,8 @@
 # Written by Simon de Kraa <simon@technorabilia.com>
 
 # vars
-BASEDIR=/volume1/docker
-BASEURL=https://raw.githubusercontent.com/technorabilia/docker-bits/main/lsio
+BASEDIR=${BASEDIR:-/volume1/docker}
+BASEURL=${BASEURL:-https://raw.githubusercontent.com/technorabilia/docker-bits/main/lsio}
 
 # checks
 [[ $# -ne 1 ]] &&
