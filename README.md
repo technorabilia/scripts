@@ -5,13 +5,13 @@ Synology memory device information in RML.
 Usage:
 
 ```
-$ synomeminfo.sh
+synomeminfo.sh
 ```
 
 or:
 
 ```
-$ curl -sL https://git.io/JsZDt | sh
+curl -sL https://git.io/JZa4a | sh
 ```
 
 Example output:
@@ -33,48 +33,49 @@ $
 ```
 
 
-# synolsioapp.sh
+# getlsioapp.sh
 
-Install LinuxServer.io application docker-compose configuration.
+Get LinuxServer.io application docker-compose configuration.
 
 Usage:
 
 ```
-$ synolsioapp.sh netbootxyz
+getlsioapp.sh netbootxyz
 ```
 
 or:
 
 ```
-$ curl -sL https://git.io/JZZrx | sh -s netbootxyz
+curl -sL https://git.io/JZarS | sh -s netbootxyz
 ```
 
 You can also specify a different BASEDIR:
 
 ```
-$ BASEDIR=/volume2/docker synolsioapp.sh netbootxyz
+BASEDIR=/volume2/docker getlsioapp.sh netbootxyz
 ```
 
 or:
 
 ```
-$ curl -sL https://git.io/JZZrx | BASEDIR=/volume2/docker sh -s netbootxyz
+curl -sL https://git.io/JZarS | BASEDIR=/volume2/docker sh -s netbootxyz
 ```
 
 Example output:
 
 ```
-$ synolsioapp.sh netbootxyz
+$ getlsioapp.sh netbootxyz
 The following directories and files have been created:
    /volume1/docker/docker-env.cfg
    /volume1/docker/netbootxyz
    /volume1/docker/netbootxyz/docker-compose.yaml
-   /volume1/docker/netbootxyz/.env
-   /volume1/docker/netbootxyz/config
    /volume1/docker/netbootxyz/assets
+   /volume1/docker/netbootxyz/config
+   /volume1/docker/netbootxyz/.env
 
 Application setup:
 1. Review the global settings in /volume1/docker/docker-env.cfg:
+   #BASEDIR=/volume1/docker
    #PUID=1024
    #PGID=100
    #TZ=Europe/Amsterdam
