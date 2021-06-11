@@ -2,6 +2,8 @@
 
 Get LinuxServer.io application docker-compose configuration.
 
+![](https://github.com/technorabilia/test/blob/main/images/getlsioapp.gif)
+
 Usage:
 
 ```
