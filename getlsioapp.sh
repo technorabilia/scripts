@@ -7,14 +7,17 @@ BASEURL=${BASEURL:-https://raw.githubusercontent.com/technorabilia/docker-bits/m
 
 # checks
 [ $# -ne 1 ] &&
-  echo "Provide one LinuxServer.io project name like e.g. 'sonarr'! Aborting." && exit 1
+  echo -e "Get LinuxServer.io application docker-compose configuration.\n
+Usage:
+  $(basename $0) <application>\n
+Application list at https://fleet.linuxserver.io/.\n" && exit 1
 
 curl --silent --location --head --fail \
   $BASEURL/$1/run-once.sh --output /dev/null || \
-  { echo "LinuxServer.io project '$1' does not exists! Aborting."; exit 1; }
+  { echo "Application $1 does not exist."; exit 1; }
 
 [ -d $BASEDIR/$1 ] && \
-  echo "Output directory already exists! Aborting." && exit 1
+  echo "Directory $BASEDIR/$1 already exists." && exit 1
 
 # create project dir
 mkdir -p $BASEDIR/$1
