@@ -12,7 +12,7 @@ Usage:
   $(basename $0) <application>\n
 Application list at https://fleet.linuxserver.io/.\n" && exit 1
 
-[ ! -d $BASEDIR/. ] && \
+[ ! -d $BASEDIR ] && \
   echo "Base directory $BASEDIR does not exist." && exit 1
 
 curl --silent --location --head --fail \
