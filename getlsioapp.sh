@@ -12,6 +12,9 @@ Usage:
   $(basename $0) <application>\n
 Application list at https://fleet.linuxserver.io/.\n" && exit 1
 
+[ ! -d $BASEDIR/. ] && \
+  echo "Base directory $BASEDIR does not exist." && exit 1
+
 curl --silent --location --head --fail \
   $BASEURL/$1/run-once.sh --output /dev/null || \
   { echo "Application $1 does not exist."; exit 1; }
