@@ -7,25 +7,32 @@ Get LinuxServer.io application docker-compose configuration.
 Usage:
 
 ```
-getlsioapp.sh netbootxyz
+# install once
+sudo curl -sL https://git.io/JZarS -o /usr/local/bin/getlsioapp.sh
+sudo chmod ugo+x /usr/local/bin/getlsioapp.sh
+
+# run many times
+getlsioapp.sh <application>
 ```
+The application list you can choose from can be found at https://fleet.linuxserver.io/.
 
 or:
 
 ```
-curl -sL https://git.io/JZarS | sh -s netbootxyz
+# run once
+curl -sL https://git.io/JZarS | sh -s <application>
 ```
 
 You can also specify a different BASEDIR:
 
 ```
-BASEDIR=/volume2/docker getlsioapp.sh netbootxyz
+BASEDIR=/volume2/docker getlsioapp.sh <application>
 ```
 
 or:
 
 ```
-curl -sL https://git.io/JZarS | BASEDIR=/volume2/docker sh -s netbootxyz
+curl -sL https://git.io/JZarS | BASEDIR=/volume2/docker sh -s <application>
 ```
 
 Example output:
@@ -63,12 +70,18 @@ Synology memory device information in RML.
 Usage:
 
 ```
+# install once
+sudo curl -sL https://git.io/JZa4a -o /usr/local/bin/synomeminfo.sh
+sudo chmod ugo+x /usr/local/bin/synomeminfo.sh
+
+# run many times
 synomeminfo.sh
 ```
 
 or:
 
 ```
+# run once
 curl -sL https://git.io/JZa4a | sh
 ```
 
